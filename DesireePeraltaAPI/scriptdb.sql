@@ -1,0 +1,117 @@
+USE [master]
+GO
+/****** Object:  Database [CurrencyPurchase]    Script Date: 3/22/2021 5:50:38 AM ******/
+CREATE DATABASE [CurrencyPurchase]
+ CONTAINMENT = NONE
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [CurrencyPurchase].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [CurrencyPurchase] SET ANSI_NULL_DEFAULT ON 
+GO
+ALTER DATABASE [CurrencyPurchase] SET ANSI_NULLS ON 
+GO
+ALTER DATABASE [CurrencyPurchase] SET ANSI_PADDING ON 
+GO
+ALTER DATABASE [CurrencyPurchase] SET ANSI_WARNINGS ON 
+GO
+ALTER DATABASE [CurrencyPurchase] SET ARITHABORT ON 
+GO
+ALTER DATABASE [CurrencyPurchase] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [CurrencyPurchase] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [CurrencyPurchase] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [CurrencyPurchase] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [CurrencyPurchase] SET CURSOR_DEFAULT  LOCAL 
+GO
+ALTER DATABASE [CurrencyPurchase] SET CONCAT_NULL_YIELDS_NULL ON 
+GO
+ALTER DATABASE [CurrencyPurchase] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [CurrencyPurchase] SET QUOTED_IDENTIFIER ON 
+GO
+ALTER DATABASE [CurrencyPurchase] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [CurrencyPurchase] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [CurrencyPurchase] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [CurrencyPurchase] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [CurrencyPurchase] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [CurrencyPurchase] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [CurrencyPurchase] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [CurrencyPurchase] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [CurrencyPurchase] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [CurrencyPurchase] SET RECOVERY FULL 
+GO
+ALTER DATABASE [CurrencyPurchase] SET  MULTI_USER 
+GO
+ALTER DATABASE [CurrencyPurchase] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [CurrencyPurchase] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [CurrencyPurchase] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [CurrencyPurchase] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [CurrencyPurchase] SET DELAYED_DURABILITY = DISABLED 
+GO
+USE [CurrencyPurchase]
+GO
+/****** Object:  Table [dbo].[Currency]    Script Date: 3/22/2021 5:50:38 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Currency](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[ISOCode] [nchar](5) NULL,
+	[Description] [nchar](150) NULL,
+	[Limit] [decimal](18, 2) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[CurrencyPurshaseItems]    Script Date: 3/22/2021 5:50:38 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[CurrencyPurshaseItems](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[userID] [int] NULL,
+	[amount] [decimal](18, 2) NULL,
+	[currencyCode] [nvarchar](5) NULL,
+	[ExchangeRate] [decimal](18, 2) NULL,
+	[total] [decimal](18, 2) NULL,
+	[Date] [date] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+USE [master]
+GO
+ALTER DATABASE [CurrencyPurchase] SET  READ_WRITE 
+GO
+USE[CurrencyPurchase]
+GO
+INSERT into [dbo].[Currency](ISOCode, Description, Limit)
+values('USD','Dolar', 200.00),('BRL','BrazilianReal', 300.00)
+GO
