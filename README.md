@@ -1,5 +1,5 @@
 # DesireePeralta-API
-.NET core API. Retrieve the exchange rate from that day for a given currency (USD and BRL) and makes a purchase in Argentina Pesos.
+.NET core API. Retrieve the exchange rate from the current date for a given currency (USD and BRL) and makes a purchase in Argentina Pesos.
 
 
 ## Getting Started
@@ -54,7 +54,7 @@ For example:
 
 ## Built With
 
-* [Visual Studio .NET Core](https://visualstudio.microsoft.com/es/vs/)
+* [Visual Studio .NET Core 2019](https://visualstudio.microsoft.com/es/vs/)
 * [Microsoft SQL Server 2014](https://www.microsoft.com/es-es/download/details.aspx?id=42299)
 
 
